@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>iZakat</title>
+    <link href="./style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script defer src="./assets/header.js"></script>
+    <script defer src="./assets/footer.js"></script>
+  </head>
+  <body>
+
+    <!-- Header -->
+    <header-component></header-component>
+    <!-- Header -->
+
+    <!-- Content -->
+    
+    <div class="slide-container">
+      <div class="slides">
+        <img src="/img/zakat1.png" class="active" />
+        <img src="./img/Dalil Zakat.jpeg" />
+        <img src="./img/ZakatDoodle.jpg" />
+      </div>
+
+      <div class="buttons">
+        <span class="next">&#10095;</span>
+        <span class="prev">&#10094;</span>
+      </div>
+
+      <div class="dotsContainer">
+        <div class="dot active" attr="0" onclick="switchImage(this)"></div>
+        <div class="dot" attr="1" onclick="switchImage(this)"></div>
+        <div class="dot" attr="2" onclick="switchImage(this)"></div>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="card-container">
+        <div class="card">
+          <img src="./img/Zakat2.jpg" alt="Zakat Info" class="card-image">
+          <div class="card-content">
+            <h3 class="card-title">What is Zakat?</h3>
+            <p class="card-text">Zakat is the act of giving a specific portion of wealth under certain conditions to be distributed to specific groups.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="./img/Jenis Zakat.png" alt="Types of Zakat" class="card-image">
+          <div class="card-content">
+            <h3 class="card-title">Did You Know?</h3>
+            <p class="card-text">There are types of zakat that must be fulfilled when the conditions are met.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="./img/Zakat3.jpg" alt="Zakat Responsibility" class="card-image">
+          <div class="card-content">
+            <h3 class="card-title">A Responsibility</h3>
+            <p class="card-text">Make sure you, as a Muslim, do not forget your responsibility to pay zakat.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="countdown-container">
+        <!-- Ramadan Card -->
+        <div class="countdown-card">
+          <h3>Countdown to Ramadan 1446H</h3>
+          <div class="timer">
+            <div class="time-block">
+              <span class="number" id="ramadan-days">00</span>
+              <span class="label">Days</span>
+            </div>
+            <div class="time-block">
+              <span class="number" id="ramadan-hours">00</span>
+              <span class="label">Hours</span>
+            </div>
+            <div class="time-block">
+              <span class="number" id="ramadan-minutes">00</span>
+              <span class="label">Minutes</span>
+            </div>
+            <div class="time-block">
+              <span class="number" id="ramadan-seconds">00</span>
+              <span class="label">Seconds</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Muharram Card -->
+        <div class="countdown-card">
+          <h3>Countdown to Muharram 1447H</h3>
+          <div class="timer">
+            <div class="time-block">
+              <span class="number" id="muharram-days">00</span>
+              <span class="label">Days</span>
+            </div>
+            <div class="time-block">
+              <span class="number" id="muharram-hours">00</span>
+              <span class="label">Hours</span>
+            </div>
+            <div class="time-block">
+              <span class="number" id="muharram-minutes">00</span>
+              <span class="label">Minutes</span>
+            </div>
+            <div class="time-block">
+              <span class="number" id="muharram-seconds">00</span>
+              <span class="label">Seconds</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+
+    <button id="theme-switcher" aria-label="Toggle deuteranopia theme">
+      <i class="fa-solid fa-eye"></i>
+    </button>
+    <!-- Content -->
+
+    <!-- Footer -->
+    <footer-component></footer-component>
+    <!-- Footer -->
+
+  </body>
+  <script defer type="text/javascript" src="./main.js"></script>
+</html>

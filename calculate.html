@@ -1,0 +1,367 @@
+<!-- GROUP PEOJECT ZAKAT ITT588
+
+Name: Muhamad Luqman Hakim Bin Muhamad Ali
+Matrix Number: 2024938691
+Class: RCDCS251 4B
+
+Name: Muhammad Aiman Bin Muhammad Fauzi
+Matrix Number: 2024794251
+Class: RCDCS251 4B -->
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>iZakat</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="./style.css" rel="stylesheet" />
+    <script defer src="./assets/header.js"></script>
+    <script defer src="./assets/footer.js"></script>
+    <script defer src="./assets/tooltip-component.js"></script>    
+    <script defer type="text/javascript" src="./assets/calculate.js"></script>
+  </head>
+  <body>
+    <!-- Header -->
+    <header-component></header-component>
+    <!-- Header -->
+
+    <!-- Content -->
+    <div class="content">
+      <div class="calculator">
+        <h1 class="title-zakat">Zakat Calculation</h1>
+        <div class="calculate-tabs">
+          <div class="tablinks" onclick="openTab(event, 'zakat-pendapatan')">Income Zakat</div>
+          <div class="tablinks" onclick="openTab(event, 'zakat-perniagaan')">Business Zakat</div>
+          <div class="tablinks" onclick="openTab(event, 'zakat-emas')">Gold Zakat</div>
+          <div class="tablinks" onclick="openTab(event, 'zakat-simpanan')">Savings Zakat</div>
+        </div>
+
+        <!-- Income Zakat -->
+        <div id="zakat-pendapatan" class="tab zakat-content">
+          <h2>Income Zakat</h2>
+
+          <div class="accordion calculate-accordian" onclick="togglePanel(this)">
+            <h3>Income Components</h3>
+          </div>
+          <div class="panel-zakat">
+            <table class="table-zakat">
+              <tr>
+                <th>Year</th>
+                <td>
+                  <select
+                    id="tahun-pendapatan"
+                    onchange="updatePendapatanNisab()"
+                  >
+                    <option value="2025" data-nisab="32010.16">2025</option>
+                    <option value="2024" data-nisab="30079.03">2024</option>
+                    <option value="2023" data-nisab="24563.45">2023</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <th>Zakat Rate (%)</th>
+                <td>
+                  <input type="number" id="kadar-zakat-pendapatan" value="2.5" readonly/>
+                </td>
+              </tr>
+            </table>
+            <table class="table-zakat">
+              <tr>
+                <th>Details</th>
+                <th>RM</th>
+              </tr>
+              <tr>
+                <td>Nisab Rate <tooltip-zakat>The income zakat is based on the value of 85 grams of gold. This gold rate needs to be checked with the current market price of gold.</tooltip-zakat></td>
+                <td>
+                  <input
+                    type="number"
+                    id="nisab-pendapatan"
+                    value=""
+                    readonly
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td>Net Income<tooltip-zakat>Income must exceed nisab after deducting mandatory expenses and adding other income (e.g. salary, rent).</tooltip-zakat></td>
+                <td>
+                  <input
+                    type="number"
+                    id="pendapatan-kasar"
+                    oninput="calculatePendapatanZakat()"
+                  />
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="total-row">
+            <div class="total-title">
+              <h3>Total Income:</h3>
+            </div>
+            <div class="total-amount">
+              <h3>RM<span id="total-pendapatan">0</span></h3>
+            </div>
+          </div>
+
+          <div class="total-row total-zakat-row">
+            <div class="total-title">
+              <h3>Total Zakat (1 Month):</h3>
+            </div>
+            <div class="total-amount">
+              <h3>RM<span id="zakat-pendapatan-sebulan">0.00</span></h3>
+            </div>
+          </div>
+
+          <div class="total-row total-zakat-row">
+            <div class="total-title">
+              <h3>Total Zakat (1 Year):</h3>
+            </div>
+            <div class="total-amount">
+              <h3>RM<span id="zakat-pendapatan-setahun">0.00</span></h3>
+            </div>
+          </div>
+
+          <div class="total-row total-zakat-row total-zakat-hadNisab" id="hadPendapatan">
+            <div class="total-title">
+              <h3>Does Not Meet Nisab Threshold</h3>
+            </div>
+          </div>           
+
+          <button class="reset" onclick="resetPendapatan()">Reset</button>
+        </div>
+        <!-- Income Zakat -->
+
+        <!-- Business Zakat -->
+        <div id="zakat-perniagaan" class="tab zakat-content">
+          <h2>Business Zakat</h2>
+
+          <div class="accordion calculate-accordian" onclick="togglePanel(this)">
+            <h3>Asset and Liability Calculation</h3>
+          </div>
+          <div class="panel-zakat">
+            <table class="table-zakat">
+              <tr>
+                <th>Details</th>
+                <th>RM</th>
+              </tr>
+              <tr>
+                <td>Current Assets<tooltip-zakat>Includes cash, inventory, and receivables used in the business.</tooltip-zakat></td>
+                <td><input type="number" id="perniagaan-asset" /></td>
+              </tr>
+              <tr>
+                <td>Liabilities Incurred<tooltip-zakat>Includes business debts and financial obligations to be paid.</tooltip-zakat></td>
+                <td><input type="number" id="perniagaan-liabiti" /></td>
+              </tr>
+            </table>
+          </div>
+          <div class="total-row">
+            <div class="total-title">
+              <h3>Total:</h3>
+            </div>
+            <div class="total-amount">
+              <h3>RM<span id="total-perniagaan">0</span></h3>
+            </div>
+          </div>
+
+          <div class="total-row total-zakat-row">
+            <div class="total-title">
+              <h3>Total Zakat (1 Year):</h3>
+            </div>
+            <div class="total-amount">
+              <h3>RM<span id="total-perniagaan-wajib">0</span></h3>
+            </div>
+          </div>
+
+          <button class="reset" onclick="resetPerniagaan()">Reset</button>
+        </div>
+        <!-- Business Zakat -->
+
+        <!-- Gold Zakat -->
+        <div id="zakat-emas" class="tab zakat-content">
+          <h2>Gold Zakat</h2>
+
+          <div class="accordion calculate-accordian" onclick="togglePanel(this)">
+            <h3>Gold Zakat Calculation</h3>
+          </div>
+          <div class="panel-zakat">
+            <table class="table-zakat">
+              <tr>
+                <th>Year</th>
+                <td>
+                  <select id="tahun-emas" onchange="updateHargaEmas()">
+                    <option value="2025" harga-emas="349.88">2025</option>
+                    <option value="2024" harga-emas="284.69">2024</option>
+                    <option value="2023" harga-emas="254.42">2023</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <th>Gold Price</th>
+                <td>
+                  <input type="number" id="harga-emas" value="" readonly />
+                </td>
+              </tr>
+              <tr>
+                <th>Uruf (g)</th>
+                <td>
+                  <input type="number" id="uruf-emas" value="800" readonly />
+                </td>
+              </tr>
+            </table>
+            <table class="table-zakat">
+              <tr>
+                <th>Details</th>
+                <th>Weight (g)</th>
+              </tr>
+              <tr>
+                <td>Gold Jewelry Weight<tooltip-zakat>Gold worn as accessories is only subject to zakat if it exceeds the nisab (e.g., 900g gold chain, nisab 800g – zakat on the excess 100g).</tooltip-zakat></td>
+                <td><input type="number" id="emas-berat-perhiasan" value="" /></td>
+              </tr>
+              <tr>
+                <td>Stored Gold Weight<tooltip-zakat>Gold stored as an investment is obligatory to pay zakat if it reaches nisab of 85g (e.g., 100g gold bar is subject to zakat).</tooltip-zakat></td>
+                <td><input type="number" id="emas-berat" value="" /></td>
+              </tr>
+            </table>
+          </div>
+          <div class="total-row">
+            <div class="total-title">
+              <h3>Total Weight:</h3>
+            </div>
+            <div class="total-amount">
+              <h3><span id="total-emas-berat">0</span>g</h3>
+            </div>
+          </div>
+
+          <div class="total-row total-zakat-row">
+            <div class="total-title">
+              <h3>Total Gold Price:</h3>
+            </div>
+            <div class="total-amount">
+              <h3>RM<span id="total-emas">0</span></h3>
+            </div>
+          </div>
+
+          <div class="total-row total-zakat-row">
+            <div class="total-title">
+              <h3>Total Zakat (1 Year):</h3>
+            </div>
+            <div class="total-amount">
+              <h3>RM<span id="total-zakat-emas">0</span></h3>
+            </div>
+          </div>
+
+          <div class="total-row total-zakat-row total-zakat-hadNisab" id="hadEmas">
+            <div class="total-title">
+              <h3>Does Not Meet Nisab Threshold</h3>
+            </div>
+          </div>
+
+          <div class="total-row total-zakat-row total-zakat-hadNisab" id="hadEmasUruf">
+            <div class="total-title">
+              <h3>Does Not Meet Uruf (g) Threshold</h3>
+            </div>
+          </div>
+
+          <button class="reset" onclick="resetEmas()">Reset</button>
+        </div>
+        <!-- Gold Zakat -->
+
+        <!-- Savings Zakat -->
+        <div id="zakat-simpanan" class="tab zakat-content">
+          <h2>Savings Zakat</h2>
+
+          <div class="accordion calculate-accordian" onclick="togglePanel(this)">
+            <h3>Savings Calculation</h3>
+          </div>
+          <div class="panel-zakat">
+            <table class="table-zakat">
+              <tr>
+                <th>Year</th>
+                <td>
+                  <select id="tahun-simpanan">
+                    <option value="2025" simpanan-nisab="29740.00">2025</option>
+                    <option value="2024" simpanan-nisab="24198.00">2024</option>
+                    <option value="2023" simpanan-nisab="21626.00">2023</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <th>Zakat Rate (%)</th>
+                <td>
+                  <input type="number" id="kadar-zakat" value="2.5" readonly />
+                </td>
+              </tr>
+            </table>
+            <table class="table-zakat">
+              <tr>
+                <th>Details</th>
+                <th>RM</th>
+              </tr>
+              <tr>
+                <td>Nisab Rate</td>
+                <td>
+                  <input type="number" id="kadar-nisab" value="" readonly />
+                </td>
+              </tr>
+              <tr>
+                <td>Savings Amount<tooltip-zakat>Zakat is imposed on bank savings or cash if it reaches nisab and has been held for one full year.</tooltip-zakat></td>
+                <td>
+                  <input
+                    type="number"
+                    id="simpanan-wang"
+                  />
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="total-row">
+            <div class="total-title">
+              <h3>Total Savings:</h3>
+            </div>
+            <div class="total-amount">
+              <h3>RM<span id="total-simpanan">0</span></h3>
+            </div>
+          </div>
+
+          <div class="total-row total-zakat-row">
+            <div class="total-title">
+              <h3>Voluntary Zakat:</h3>
+            </div>
+            <div class="total-amount">
+              <h3>RM<span id="total-simpanan-takwajib">0</span></h3>
+            </div>
+          </div>
+
+          <div class="total-row total-zakat-row">
+            <div class="total-title">
+              <h3>Obligatory Zakat (1 Year):</h3>
+            </div>
+            <div class="total-amount">
+              <h3>RM<span id="total-simpanan-wajib">0</span></h3>
+            </div>
+          </div>
+
+          <div class="total-row total-zakat-row total-zakat-hadNisab" id="hadSimpanan">
+            <div class="total-title">
+              <h3>Does Not Meet Nisab Threshold</h3>
+            </div>
+          </div>
+
+          <button class="reset" onclick="resetSimpanan()">Reset</button>
+        </div>
+        <!-- Savings Zakat -->
+         
+      </div>
+    </div>
+
+    <button id="theme-switcher" aria-label="Toggle deuteranopia theme">
+      <i class="fa-solid fa-eye"></i>
+    </button>
+    <!-- Content -->
+
+    <!-- Footer -->
+    <footer-component></footer-component>
+    <!-- Footer -->
+  </body>
+</html>
