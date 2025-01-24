@@ -20,6 +20,7 @@ function updatePendapatanNisab() {
   
     const pendapatanKasar = parseFloat(pendapatanInput.value) || 0;
     const nisab = parseFloat(nisabInput.value) || 0;
+    document.getElementById('total-pendapatan').textContent = pendapatanKasar.toFixed(2);
   
     if (pendapatanKasar >= nisab && nisab > 0) {
       const zakatSebulan = ((pendapatanKasar * 2.5) / 100) / 12;
