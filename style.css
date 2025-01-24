@@ -747,15 +747,15 @@ body.deuteranopia {
   color: var(--secondary-color);
 }
 
-.accordion.calculate-accordian {
+.deuteranopia.accordion.calculate-accordian {
   background-color: var(--secondary-color);
 }
 
-.accordion.calculate-accordian:hover {
+.deuteranopia.accordion.calculate-accordian:hover {
   background-color: var(--primary-color);
 }
 
-.reset {
+.deuteranopia.reset {
   background-color: var(--secondary-color);
 }
 
